@@ -1,0 +1,57 @@
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 22.5px 0 rgba(28, 29, 31, 0.05);
+  border-bottom: 1px solid #eaedf4;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e31e24;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.brand {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.link {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: rgba(15, 15, 16, 0.5);
+}
+
+.activeLink {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 155%;
+  letter-spacing: 0;
+  color: #000000;
+}

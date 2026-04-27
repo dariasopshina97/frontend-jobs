@@ -1,0 +1,31 @@
+.skillInput {
+  width: 269px;
+  height: 30px;
+}
+
+.addSkillButton {
+  width: 34px;
+  height: 30px;
+  min-width: 34px;
+  border-radius: 8px;
+  padding: 4px;
+  background-color: #228be6;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addSkillButton:hover {
+  background-color: #1c7ed6;
+}
+
+.skillPill {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  border-radius: 99px;
+  background-color: #f6f6f7;
+  color: #000000;
+}

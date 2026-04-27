@@ -1,0 +1,42 @@
+.hero {
+  width: 100%;
+  border-bottom: 1px solid rgba(15, 15, 16, 0.2);
+  padding-bottom: 24px;
+}
+
+.title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 135%;
+  letter-spacing: 0;
+  color: #0f0f10;
+}
+
+.subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: rgba(15, 15, 16, 0.5);
+}
+
+.search {
+  width: 403px;
+}
+
+.search input {
+  background-color: #f6f6f7;
+}
+
+.searchButton {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #4263eb;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
