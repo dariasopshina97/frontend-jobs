@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   Container,
   Stack,
@@ -12,18 +12,24 @@ import { SkillsFilter } from './features/vacancies/SkillsFilter/SkillsFilter';
 import { CityFilter } from './features/vacancies/CityFilter/CityFilter';
 import { VacancyList } from './features/vacancies/VacancyList';
 import { VacancyHero } from './features/vacancies/VacancyHero/VacancyHero';
-import { mockVacancies } from './features/vacancies/mocks';
 import './App.css';
 
-// Test
-import { fetchVacancies } from './features/vacancies/api';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import {
+  loadVacancies,
+  setCurrentPage,
+  setSearch,
+} from './features/vacancies/slice';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useAppDispatch();
+  const { currentPage, totalPages, items, isLoading, search } = useAppSelector(
+    (state) => state.vacancies,
+  );
 
   useEffect(() => {
-    fetchVacancies();
-  }, []);
+    dispatch(loadVacancies({ page: currentPage, search }));
+  }, [dispatch, currentPage, search]);
 
   return (
     <>
@@ -32,8 +38,14 @@ export default function App() {
       <main>
         <Container size="lg" py="xl">
           <Stack gap="xl">
-            <VacancyHero />
-
+            <VacancyHero
+              search={search}
+              onSearchChange={(value) => dispatch(setSearch(value))}
+              onSearchSubmit={() => {
+                dispatch(setCurrentPage(1));
+                dispatch(loadVacancies({ page: 1, search }));
+              }}
+            />
             <Flex className="contentLayout" gap="xl" align="flex-start">
               <Stack className="filtersColumn" gap="md">
                 <Paper withBorder radius="md" p="lg">
@@ -46,17 +58,25 @@ export default function App() {
               </Stack>
 
               <Stack className="resultsColumn" gap="lg">
-                <VacancyList vacancies={mockVacancies} />
-
-                <Paper withBorder radius="md" p="lg">
-                  <Center>
-                    <Pagination
-                      value={currentPage}
-                      onChange={setCurrentPage}
-                      total={1}
-                    />
+                {isLoading ? (
+                  <Center style={{ height: 200 }}>
+                    <p>Загрузка вакансий...</p>
                   </Center>
-                </Paper>
+                ) : (
+                  <VacancyList vacancies={items} />
+                )}
+
+                <Center>
+                  <Pagination
+                    value={currentPage}
+                    onChange={(page) => dispatch(setCurrentPage(page))}
+                    total={totalPages}
+                    classNames={{
+                      control: 'paginationItem',
+                      dots: 'paginationDots',
+                    }}
+                  />
+                </Center>
               </Stack>
             </Flex>
           </Stack>

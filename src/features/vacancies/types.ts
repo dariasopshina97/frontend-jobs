@@ -21,13 +21,17 @@ export interface VacancySchedule {
   name: string;
 }
 
+export interface VacancyWorkFormat {
+  name: string;
+}
+
 export interface Vacancy {
   id: string;
   name: string;
   alternate_url: string;
   salary: VacancySalary | null;
   employer: VacancyEmployer;
-  experience: VacancyExperience;
+  experience?: VacancyExperience | null;
   area: VacancyArea;
   schedule: VacancySchedule | null;
   work_format?: VacancyWorkFormat[];
@@ -54,7 +58,9 @@ export interface VacancyCardData {
 
 export interface FetchVacanciesParams {
   page: number;
+  search: string;
   text: string;
   area: string;
   skills: string[];
+  searchField?: 'name' | 'company_name';
 }
